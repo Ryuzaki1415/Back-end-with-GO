@@ -1,8 +1,11 @@
 package user
 
 import (
+	"encoding/json"
 	"net/http"
 
+	"github.com/Ryuzaki1415/ecom/types"
+	"github.com/Ryuzaki1415/ecom/utils"
 	"github.com/gorilla/mux"
 )
 
@@ -28,5 +31,16 @@ func (h *Handler)handleLogin(w http.ResponseWriter,r *http.Request){  // logic f
 
 }
 func (h *Handler)handleRegister(w http.ResponseWriter,r *http.Request){  //login for handling Registration 
+
+
+
+	//get json payload
+	var payload types.RegisterUserPayload
+	if err:=utils.ParseJSON(r,payload);err!=nil{
+		utils.WriteError(w, http.StatusBadRequest,err)
+	}
+	//check if user exists
+	//if no then create
+
 
 }
